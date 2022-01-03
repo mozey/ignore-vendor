@@ -13,6 +13,11 @@ See [Files changed](https://github.com/mozey/ignore-vendor/pull/1/files) in the 
 With the `.gitattributes` approach above, files changed in `vendor` is still considered to be changes, i.e. the *"Files changed"* tab shows the number 3.
 
 An alternative approach would be to use two branches. First branch [example2-vendor]() from main, and only change `vendor` files. Second, branch [example2]() from `example2-vendor`. Non-vendor code, e.g. your application code, can be changed in the second branch.
+```sh
+git checkout main
+git checkout -b example2-vendor
+git checkout -b example2
+```
 
 ### Merge changes from main
 
@@ -30,6 +35,8 @@ Then...
 
 Merge `example2-vendor` with `example2`
 ```sh
+git checkout example2-vendor
+git pull
 git checkout example2
 git merge example2-vendor
 ```
