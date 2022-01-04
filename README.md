@@ -52,6 +52,9 @@ Suppose you already have a branch where both *"vendor"* and *"app"* files were c
 1. Create the two branch as described above
 
 2. Get a list of files that were changed, [see this](https://www.mozey.co/post/git#see-all-changed-files-on-a-branchhttpstackoverflowcoma6913546639133). Save paths starting with *"vendor/"* to `vendor-path.txt`, and the rest of the paths to `app-path.txt`. One file per line
+```sh
+git diff --name-only main...your-existing-branch
+```
 
 3. Checkout vendor paths into the vendor branch
 ```sh
