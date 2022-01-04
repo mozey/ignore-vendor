@@ -45,6 +45,23 @@ git checkout example2/app
 git merge example2/vendor
 ```
 
+### Use alternative approach given an existing branch
+
+Suppose you already have a branch where both *"vendor"* and *"app"* files were changed. 
+
+1. Create the two branch as described above
+
+2. Get a list of files that were changed, [see this](https://www.mozey.co/post/git#see-all-changed-files-on-a-branchhttpstackoverflowcoma6913546639133)
+
+3. Checkout paths starting with *"vendor/"* into the vendor branch, [see this](https://stackoverflow.com/a/1355990/639133), and commit
+
+4. Merge vendor branch into the app branch
+
+4. Checkout the remaining paths into the app branch, and commit
+
+Reference
+- [Git tip: How to "merge" specific files from another branch](https://jasonrudolph.com/blog/2009/02/25/git-tip-how-to-merge-specific-files-from-another-branch/)
+
 
 
 
