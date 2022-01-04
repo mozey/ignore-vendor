@@ -45,7 +45,7 @@ git checkout example2/app
 git merge example2/vendor
 ```
 
-### Use alternative approach given an existing branch
+### Instructions to use alternative approach given an existing branch
 
 Suppose you already have a branch where both *"vendor"* and *"app"* files were changed. 
 
@@ -57,7 +57,7 @@ Suppose you already have a branch where both *"vendor"* and *"app"* files were c
 
 4. Merge vendor branch into the app branch
 
-4. Checkout the remaining paths into the app branch, and commit
+5. Checkout the remaining paths into the app branch, and commit
 
 Reference
 - [Git tip: How to "merge" specific files from another branch](https://jasonrudolph.com/blog/2009/02/25/git-tip-how-to-merge-specific-files-from-another-branch/)
