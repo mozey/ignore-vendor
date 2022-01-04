@@ -56,7 +56,7 @@ Suppose you already have a branch where both *"vendor"* and *"app"* files were c
 git diff --name-only main...your-existing-branch
 ```
 
-3. Checkout vendor paths into the vendor branch
+3. Checkout vendor paths into the vendor branch, and commit
 ```sh
 git checkout your-existing-branch --pathspec-from-file=vendor-paths.txt
 ```
