@@ -51,13 +51,19 @@ Suppose you already have a branch where both *"vendor"* and *"app"* files were c
 
 1. Create the two branch as described above
 
-2. Get a list of files that were changed, [see this](https://www.mozey.co/post/git#see-all-changed-files-on-a-branchhttpstackoverflowcoma6913546639133)
+2. Get a list of files that were changed, [see this](https://www.mozey.co/post/git#see-all-changed-files-on-a-branchhttpstackoverflowcoma6913546639133). Save paths starting with *"vendor/"* to `vendor-path.txt`, and the rest of the paths to `app-path.txt`. One file per line
 
-3. Checkout paths starting with *"vendor/"* into the vendor branch, [see this](https://stackoverflow.com/a/1355990/639133), and commit
+3. Checkout vendor paths into the vendor branch
+```sh
+git checkout your-existing-branch --pathspec-from-file=vendor-paths.txt
+```
 
-4. Merge vendor branch into the app branch
+4. Merge vendor branch into the app branch as described above
 
 5. Checkout the remaining paths into the app branch, and commit
+```sh
+git checkout your-existing-branch --pathspec-from-file=app-paths.txt
+```
 
 Reference
 - [Git tip: How to "merge" specific files from another branch](https://jasonrudolph.com/blog/2009/02/25/git-tip-how-to-merge-specific-files-from-another-branch/)
