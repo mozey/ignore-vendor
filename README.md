@@ -59,7 +59,7 @@ git checkout your-existing-branch --pathspec-from-file=app-paths.txt
 git commit -m "App changes from existing branch"
 ```
 
-- Make sure you've committed the changes into the new branches using `git diff`. Then delete "*your-existing-branch*", and work on the two branches created above
+- Make sure you've committed the changes into the new branches using `git diff`. Then delete *"your-existing-branch"*, and work on the two branches created above
 
 - Create the PRs, and merge changes as explained above
 
