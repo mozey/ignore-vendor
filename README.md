@@ -21,52 +21,47 @@ git checkout -b example2/app
 
 **NOTE** on creating the PRs
 - When opening the PR for `example2/vendor`, set it to merge with `main`
-- When opening the PR for `example2/app`, set it to merge with `example2/vendor`, not `main`
+- When opening the PR for `example2/app`, set it to merge with `example2/vendor`, not `main`. Then merge this branch first
 
-### Merge changes from main
-
-First merge `main` with `example2/vendor`
+If required, merge changes from main directly into each branch
 ```sh
 git checkout main
 git pull
 git checkout example2/vendor
 git merge main
-```
-
-Then...
-
-### Merge changes from example2/vendor
-
-Merge `example2/vendor` with `example2/app`
-```sh
-git checkout example2/vendor
-git pull
 git checkout example2/app
-git merge example2/vendor
+git merge main
 ```
 
-### Instructions to use alternative approach given an existing branch
+
+## Alternative approach given an existing branch
 
 Suppose you already have a branch where both *"vendor"* and *"app"* files were changed. 
 
-1. Create the two branch as described above
-
-2. Get a list of files that were changed, [see this](https://www.mozey.co/post/git#see-all-changed-files-on-a-branchhttpstackoverflowcoma6913546639133). Save paths starting with *"vendor/"* to `vendor-path.txt`, and the rest of the paths to `app-path.txt`. One file per line
+- On the existing branch, get a list of files that were changed, [see this](https://www.mozey.co/post/git/#list-changes-in-branch). Save paths starting with *"vendor/"* to `vendor-paths.txt`, and the rest of the paths to `app-paths.txt`. One file per line
 ```sh
 git diff --name-only main...your-existing-branch
 ```
 
-3. Checkout vendor paths into the vendor branch, and commit
+- From main, create a branch for the *"vendor"* files. Checkout the vendor paths into this branch, and commit
 ```sh
+git checkout main
+git checkout -b example3/vendor
 git checkout your-existing-branch --pathspec-from-file=vendor-paths.txt
+git commit -m "Vendor changes from existing branch"
 ```
 
-4. Merge vendor branch into the app branch as described above
-
-5. Checkout the remaining paths into the app branch, and commit
+- From *"example3/vendor"*, create a branch for the *"app"* files. Checkout the app paths into this branch, and commit
 ```sh
+git checkout example3/vendor
+git checkout -b example3/app
 git checkout your-existing-branch --pathspec-from-file=app-paths.txt
+git commit -m "App changes from existing branch"
 ```
+
+- Make sure you've committed the changes into the new branches using `git diff`. Then delete "*your-existing-branch*", and work on the two branches created above
+
+- Create the PRs, and merge changes as explained above
 
 Reference
 - [Git tip: How to "merge" specific files from another branch](https://jasonrudolph.com/blog/2009/02/25/git-tip-how-to-merge-specific-files-from-another-branch/)
